@@ -9,7 +9,7 @@ networks:
       name: web
 
 services:      
-  node-server:
+  server:
     build: .
     container_name: front-app
     networks: 
