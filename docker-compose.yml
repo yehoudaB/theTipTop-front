@@ -12,7 +12,7 @@ services:
   server:
     build: .
     container_name: front-app
-    networks: 
+    networks:  
       - private
       - web
 
