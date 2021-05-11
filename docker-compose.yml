@@ -15,4 +15,10 @@ services:
     networks:  
       - private
       - web
+      labels:
+        - traefik.enable=true
+        - "traefik.http.routers.front.entrypoints=websecure"
+        - traefik.http.routers.front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
+        - "traefik.http.routers.front.tls.certresolver=lets-encr"
+        
 
