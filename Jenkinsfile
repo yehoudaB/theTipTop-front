@@ -1,28 +1,23 @@
 pipeline {
-    agent { docker { image 'node:14-alpine' } }
+    agent  any
     stages {
         stage('Checkout') {
-        deleteDir()
-        checkout scm 
+             steps {
+                deleteDir()
+                checkout scm 
+            }
         }
-         
-        stage('NPM Install') {
-            withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
-            sh 'npm install'
+        stage('run compose') {
+            
+            sh 'docker-compose  up -d'
         }
-
         stage('yb test') {
             steps {
                 sh 'npm --version'
             }
         }
-        stage('Build') {
-            milestone()
-            sh 'ng build --prod --aot --sm --progress=false'
-        }
     }
 }
-
 /*    stage('Checkout') {
         deleteDir()
         checkout scm 
@@ -41,7 +36,7 @@ pipeline {
           sh 'ng test --progress=false --watch false'
         }*/
         //junit '**/test-results.xml'
-    }/*
+/*
 
     stage('Lint') {
         sh 'ng lint'
