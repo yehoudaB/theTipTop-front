@@ -12,11 +12,6 @@ pipeline {
                 sh 'docker-compose  up -d'
             }
         }
-        stage('yb test') {
-            steps {
-                sh 'npm --version'
-            }
-        }
     }
 }
 /*    stage('Checkout') {
