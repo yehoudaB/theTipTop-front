@@ -15,7 +15,7 @@ pipeline {
     }
 }
     stage(' build prod') {
-        sh 'npm run build --prod'
+        sh 'ng  build --prod'
     }
 /*
     
