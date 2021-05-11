@@ -1,5 +1,8 @@
 pipeline {
-    agent { any { image 'node:14-alpine' } }
+    agent { 
+        docker { image 'node:14-alpine' }
+     }
+    
     stages {
         stage('Checkout') {
              steps {
@@ -14,9 +17,8 @@ pipeline {
         }
         
              
-         stage('NPM Install') {
+        stage('NPM Install') {
             steps{
-
                 withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
                     sh 'npm install'
                 }
