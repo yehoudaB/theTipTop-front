@@ -14,9 +14,8 @@ pipeline {
         }
     }
 }
-/*    stage('Checkout') {
-        deleteDir()
-        checkout scm 
+    stage(' build prod') {
+        sh 'npm run build --prod'
     }
 
     
