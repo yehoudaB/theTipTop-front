@@ -12,9 +12,20 @@ pipeline {
                 sh 'docker-compose  up -d'
             }
         }
+        
+             
+         stage('NPM Install') {
+            steps{
+
+                withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+                    sh 'npm install'
+                }
+            }
+           
+        }
         stage(' build prod') {
              steps {
-                sh 'ng  build --prod'
+                sh 'npm run build --prod'
             }
             
         }
