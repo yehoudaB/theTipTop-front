@@ -13,8 +13,11 @@ pipeline {
             }
         }
         stage(' build prod') {
-            sh 'npm -v'
-            sh 'ng  build --prod'
+             steps {
+               sh 'npm -v'
+                sh 'ng  build --prod'
+            }
+            
         }
     }
 }
