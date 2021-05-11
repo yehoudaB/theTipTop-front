@@ -12,9 +12,13 @@ export class LotService {
   ) { }
 
 
+  headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*');
+
   getLots(): Observable<any>{
     return this.httpClient.get(
-      'https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots/', 
+      'https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots/', {'headers' : this.headers }
     )
   }
 }

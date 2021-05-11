@@ -10,12 +10,12 @@ pipeline {
                 checkout scm 
             }
         }
-        stage('install compose') {
+        /* stage('install compose') {
             steps {
                 sh '''
                     docker-compose --version'''
             }
-        }
+        } */
         stage('run compose') {
             steps {
                 sh 'docker-compose  up -d'
