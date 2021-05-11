@@ -1,5 +1,5 @@
 pipeline {
-    agent  any
+     agent { docker { image 'node:14-alpine' } }
     stages {
         stage('Checkout') {
              steps {
@@ -12,11 +12,13 @@ pipeline {
                 sh 'docker-compose  up -d'
             }
         }
+        stage(' build prod') {
+            sh 'npm -v'
+            sh 'ng  build --prod'
+        }
     }
 }
-    stage(' build prod') {
-        sh 'ng  build --prod'
-    }
+    
 /*
     
 
