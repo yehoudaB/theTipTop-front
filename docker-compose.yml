@@ -10,7 +10,7 @@ networks:
 
 services:      
   node:
-    build: node.Dockerfile
+    build: ./node.Dockerfile
     container_name: nodejs
     networks:  
       - private
@@ -18,7 +18,7 @@ services:
     user: 0:0
 
   server:
-    build: nginx.Dockerfile
+    build: ./nginx.Dockerfile
     container_name: front-app
     networks:  
       - private
