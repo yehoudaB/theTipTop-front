@@ -17,9 +17,13 @@ export class LotService {
   .set('Access-Control-Allow-Origin', '*');
 
   getLots(): Observable<any>{
-    return this.httpClient.get(
-      'https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots/', {'headers' : this.headers }
-    )
+    
+    const url = this.httpClient.get(
+      'https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots/', {'headers' : 
+      {'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
+    });
+    return url
+    
   }
 }
 

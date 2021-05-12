@@ -1,11 +1,15 @@
 #stage 1
 FROM node:lts-alpine3.13 as node
-WORKDIR /app
-COPY . .
 
+WORKDIR /usr/src/app
+COPY package.json ./
 RUN npm install
-RUN npm run build --prod
+COPY . .
+RUN npm run build
 
-#stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/theTipTop-front /usr/share/nginx/html
+### STAGE 2: Run ###
+FROM nginx:1.17.1-alpine
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/src/app/dist/theTipTop-front /usr/share/nginx/html
+EXPOSE 80
+
