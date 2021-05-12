@@ -27,11 +27,5 @@ pipeline {
       }
     }
 
-    stage('copy') {
-      steps {
-        dockerShell(executorScript: 'COPY --from=node /app/dist/theTipTop-front /usr/share/nginx/html')
-      }
-    }
-
   }
 }
