@@ -25,7 +25,7 @@ pipeline {
         }
         stage('install') {
             steps {
-                nodejs(nodeJSInstallationName: 'node13') {
+                nodejs(nodeJSInstallationName: 'Node 14') {
                     sh 'npm run  build --prod'
                 }
             }
