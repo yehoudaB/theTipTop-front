@@ -9,8 +9,16 @@ networks:
       name: web
 
 services:      
+  node:
+    build: node.Dockerfile
+    container_name: nodejs
+    networks:  
+      - private
+      - web
+    user: 0:0
+
   server:
-    build: .
+    build: nginx.Dockerfile
     container_name: front-app
     networks:  
       - private
@@ -21,3 +29,4 @@ services:
       - "traefik.http.routers.front.entrypoints=websecure"
       - traefik.http.routers.front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
       - "traefik.http.routers.front.tls.certresolver=lets-encr"
+
