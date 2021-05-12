@@ -35,7 +35,7 @@ pipeline {
        steps {
          sh 'ls -a'
         sh 'pwd'
-         // sh 'docker cp jenkins:/app/dist/theTipTop-front  /tmp'
+        sh 'docker cp ./dist/theTipTop-front/ :front-app/app/dist/theTipTop-front/'
           //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
       }
     } 
