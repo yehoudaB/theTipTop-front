@@ -24,10 +24,11 @@ pipeline {
             }
         }
         stage('install') {
-            steps {
-                nodejs(nodeJSInstallationName: 'Node') {
-                    sh 'npm run  build --prod'
-                }
+            agent {
+        docker { image 'node:14' }
+    }
+                sh 'npm run  build --prod'
+                
             }
         }
     }    
