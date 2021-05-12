@@ -10,7 +10,7 @@ RUN  npm build --prod
 
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
-COPY default.conf /etc/nginx/ /
+
 COPY --from=build /usr/src/app/dist/theTipTop-front /usr/share/nginx/html
 
 
