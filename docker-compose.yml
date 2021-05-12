@@ -10,8 +10,9 @@ networks:
 
 services:      
   node:
-    build: .
-    dockerfile: Dockerfile-node
+    build: 
+      context: .
+      dockerfile: Dockerfile-node
     container_name: nodejs
     networks:  
       - private
@@ -19,8 +20,9 @@ services:
     user: 0:0
 
   server:
-    build: .
-    dockerfile: Dockerfile-front
+    build: 
+      context: .
+      dockerfile: Dockerfile-front
     container_name: front-app
     networks:  
       - private
