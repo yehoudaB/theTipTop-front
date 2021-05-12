@@ -8,11 +8,11 @@ pipeline {
       }
     }
 
-    stage('remove old node') { 
+/*     stage('remove old node') { 
        steps {
           sh 'docker rm node'
       }
-    }
+    } */
     stage('run compose') {
       steps {
         sh 'docker-compose  up -d'
