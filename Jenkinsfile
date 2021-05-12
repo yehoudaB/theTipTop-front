@@ -8,11 +8,7 @@ pipeline {
       }
     }
 
-/*     stage('remove old node') { 
-       steps {
-          sh 'docker rm node'
-      }
-    } */
+
     stage('run compose') {
       steps {
         sh 'docker-compose  up -d'
@@ -32,6 +28,12 @@ pipeline {
         sh 'npm run ng build --prod'
       }
     }
+    stage('copy to nginx') { 
+      agent any
+       steps {
+          sh 'docker cp node:/app/dist/theTipTop-front front-app:/usr/share/nginx/html'
+      }
+    } 
 
    
     

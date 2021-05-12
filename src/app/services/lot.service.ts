@@ -11,7 +11,7 @@ export class LotService {
     private httpClient: HttpClient,
   ) { }
 
-  baseUrl:string = "/api/"
+  baseUrl:string = "https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots"
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
