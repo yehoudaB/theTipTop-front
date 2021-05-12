@@ -28,7 +28,7 @@ pipeline {
                 docker { image 'node:latest' }
             }
             steps {
-                sh 'npm run  build --prod'
+                sh 'npm run ng build --prod'
             }
         }
     }
