@@ -24,8 +24,11 @@ pipeline {
             }
         }
         stage('install') {
+            agent { 
+                label: node
+            }
             steps {
-                sh 'npm install'
+              
                 sh 'npm run  build --prod'
             }
         }
