@@ -1,73 +1,37 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-             steps {
-                deleteDir()
-                checkout scm 
-            }
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        deleteDir()
+        checkout scm
+      }
+    }
+
+    stage('run compose') {
+      steps {
+        sh 'docker-compose  up -d'
+      }
+    }
+
+    stage('install') {
+      agent {
+        docker {
+          image 'node:latest'
         }
-        /*  stage('install compose') {
-                steps {
-                sh '''
-                    docker ps
-                    su && apt-get update
-                    apt-get install sudo -y
-                    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                    sudo chmod +x /usr/local/bin/docker-compose
-                    docker-compose --version'''
-            }
-        } */
-        stage('run compose') {
-            steps {
-                sh 'docker-compose  up -d'
-            }
-        }
-        stage('install') {
-            agent {
-                docker { image 'node:latest' } 
-            }
-            steps {
-                sh ' npm install '
-                sh 'npm run ng build --prod'
-            }
-        }
-    }
-}    
-            
-    
-/*
-    
 
-    stage('NPM Install') {
-        withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
-            sh 'npm install'
-        }
+      }
+      steps {
+        sh ' npm install '
+        sh 'npm run ng build --prod'
+      }
     }
 
-    stage('Test') {
-        withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-          sh 'ng test --progress=false --watch false'
-        }*/
-        //junit '**/test-results.xml'
-/*
-
-    stage('Lint') {
-        sh 'ng lint'
+    stage('copy') {
+      steps {
+        dockerShell(executorScript: 'COPY --from=node /app/dist/theTipTop-front /usr/share/nginx/html')
+      }
     }
 
-    stage('Build') {
-        milestone()
-        sh 'ng build --prod --aot --sm --progress=false'
-    }
-
-    stage('Archive') {
-        sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
-        archive 'dist.tar.gz'
-    }
-
-    stage('Deploy') {
-        milestone()
-        echo "Deploying..."
-    }
-} */
+  }
+}
