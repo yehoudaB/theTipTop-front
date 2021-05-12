@@ -13,7 +13,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile-node
-    container_name: nodejs
+    container_name: node
     networks:  
       - private
       - web
@@ -25,7 +25,7 @@ services:
       dockerfile: Dockerfile-nginx
     container_name: front-app
     depends_on: 
-      - nodejs
+      - node
     networks:  
       - private
       - web
