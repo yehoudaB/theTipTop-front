@@ -27,8 +27,9 @@ pipeline {
             agent {
                 docker { image 'node:latest' }
             }
+            steps {
                 sh 'npm run  build --prod'
-                
+            }
         }
     }
 }    
