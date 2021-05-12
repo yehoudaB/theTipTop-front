@@ -29,11 +29,10 @@ pipeline {
             }
                 sh 'npm run  build --prod'
                 
-            }
         }
-    }    
+    }
+}    
             
-}
     
 /*
     
