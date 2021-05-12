@@ -25,7 +25,7 @@ pipeline {
         }
         stage('install') {
             steps {
-                npm install
+                sh 'npm install'
                 sh 'npm run  build --prod'
             }
         }
