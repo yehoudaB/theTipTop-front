@@ -1,9 +1,10 @@
 {
     "/api": {
-        "target": "https://api.dsp4-5archio19-ah-je-gh-yb.fr/api",
+        "target": "https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/",
         "secure": false,
-        "logLevel": "debug",
+        "logLevel": "info",
         "cookieDomainRewrite": "*",
-        "changeOrigin": true
+        "changeOrigin": true,
+        "pathRewrite": {"^/api" : ""}
       }
 }

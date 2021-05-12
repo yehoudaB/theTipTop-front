@@ -1,2 +1,6 @@
-<p>lot works!</p>
-<h3>{{lots | json}} </h3>
+<h1>{{valueTest}} </h1>
+
+<div *ngFor="let lot of lots | async">
+    <p> <strong>{{ lot.name }}</strong> {{ lot.description }}  {{ lot.price }} €</p>
+   
+</div>

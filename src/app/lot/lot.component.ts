@@ -10,7 +10,8 @@ export class LotComponent implements OnInit {
 
   constructor(private lotService:LotService) { }
 
-  public lots:any;
+  public lots = this.lotService.getLots();
+  public valueTest:number = 0;
   ngOnInit(): void {
     this.lotService.getLots().subscribe({
       next(value){
@@ -23,10 +24,14 @@ export class LotComponent implements OnInit {
         console.log("complete");
       }
     })
-
-    console.log(this.lots)
+    this.showTime()
   }
 
 
-
+  showTime(){
+    setInterval(() => {        
+      this.valueTest  =Math.round(Math.random() * 10)
+    }, 1000);
+  }
+  
 }

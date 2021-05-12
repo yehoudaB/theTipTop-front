@@ -11,6 +11,7 @@ export class LotService {
     private httpClient: HttpClient,
   ) { }
 
+  baseUrl:string = "/api/"
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
@@ -19,11 +20,11 @@ export class LotService {
   getLots(): Observable<any>{
     
     const url = this.httpClient.get(
-      'https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/lots/', {'headers' : 
-      {'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
+      this.baseUrl + 'lots', {'headers' : this.headers 
     });
     return url
-    
   }
+
+  
 }
 
