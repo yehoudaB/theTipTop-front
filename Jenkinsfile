@@ -30,7 +30,7 @@ pipeline {
     stage('copy to nginx') {
       agent any
        steps {
-          sh 'docker cp  /app/dist/theTipTop-front /usr/share/nginx/html'
+          sh 'docker cp  /app/dist/theTipTop-front node:/usr/share/nginx/html'
       }
     }
     
