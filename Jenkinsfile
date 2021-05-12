@@ -11,6 +11,9 @@ pipeline {
             }
         }
          stage('install compose') {
+              steps {
+        sh 'docker ps'
+      }
       steps {
         sh '''
             su && apt-get update
