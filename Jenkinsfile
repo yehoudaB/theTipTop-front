@@ -7,7 +7,7 @@ pipeline {
                 checkout scm 
             }
         }
-         stage('install compose') {
+        /*  stage('install compose') {
       steps {
         sh '''
             docker ps
@@ -17,30 +17,15 @@ pipeline {
             sudo chmod +x /usr/local/bin/docker-compose
             docker-compose --version'''
       }
-    }
+    } 
         stage('run compose') {
             steps {
                 sh 'docker-compose  up -d'
             }
-        }
+        }*/
     
         
-             
-        stage('NPM Install') {
-            steps{
-                withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
-                    sh 'npm install'
-                }
-            }
-           
-        }
-        stage(' build prod') {
-             steps {
-                sh 'npm run build --prod'
-            }
             
-        }
-    }
 }
     
 /*
