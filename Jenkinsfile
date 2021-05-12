@@ -25,9 +25,10 @@ pipeline {
         }
         stage('install') {
             agent {
-                docker { image 'node:latest' }
+                docker { image 'node:latest' } 
             }
             steps {
+                sh 'sudo npm install -g @angular/cli@latest'
                 sh 'npm run ng build --prod'
             }
         }
