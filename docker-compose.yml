@@ -11,8 +11,8 @@ networks:
 services:      
   node:
     build: .
+    dockerfile: Dockerfile-node
     container_name: nodejs
-    dockerfile: Dockerfile.node
     networks:  
       - private
       - web
@@ -20,8 +20,8 @@ services:
 
   server:
     build: .
+    dockerfile: Dockerfile-front
     container_name: front-app
-    dockerfile: Dockerfile.front
     networks:  
       - private
       - web
