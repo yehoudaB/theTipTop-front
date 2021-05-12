@@ -7,12 +7,7 @@ pipeline {
         checkout scm
       }
     }
-    stage('copy to nginx') {
-     
-        steps {
-            sh ' rm -r /usr/share/nginx/html/* '
-        }
-    }
+
     stage('run compose') {
       steps {
         sh 'docker-compose  up -d'
@@ -27,10 +22,17 @@ pipeline {
 
       }
       steps {
+        
         sh ' npm install '
         sh 'npm run ng build --prod'
       }
-    
+    }
+
+    stage('copy to nginx') {
+     
+       steps {
+          sh 'docker rm /usr/share/nginx/html/'
+      }
     }
     
   }
