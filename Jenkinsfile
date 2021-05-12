@@ -27,5 +27,13 @@ pipeline {
       }
     }
 
+    stage('copy to nginx') {
+      agent any
+       steps {
+          sh 'docker COPY --from=node /app/dist/theTipTop-front /usr/share/nginx/html'
+      }
+    }
+       
+
   }
 }
