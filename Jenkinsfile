@@ -24,12 +24,10 @@ pipeline {
             }
         }
         stage('install') {
-            agent { 
-                label: node
-            }
             steps {
-              
-                sh 'npm run  build --prod'
+                nodejs(nodeJSInstallationName: 'Node14') {
+                    sh 'npm run  build --prod'
+                }
             }
         }
     }    
