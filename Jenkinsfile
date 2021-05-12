@@ -31,7 +31,7 @@ pipeline {
       }
     }
     stage('copy to nginx') { 
-      agent any
+     
        steps {
          sh 'ls -a'
         sh 'pwd'
