@@ -22,7 +22,7 @@ services:
   server:
     build: 
       context: .
-      dockerfile: Dockerfile-front
+      dockerfile: Dockerfile-nginx
     container_name: front-app
     networks:  
       - private
