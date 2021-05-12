@@ -23,7 +23,11 @@ pipeline {
                 sh 'docker-compose  up -d'
             }
         }
-    
+        stage('install') {
+            steps {
+                sh 'npm run build --prod'
+            }
+        }
     }    
             
 }
