@@ -33,8 +33,10 @@ pipeline {
     stage('copy to nginx') { 
       agent any
        steps {
+          sh 'ls -a'
+        sh 'pwd'
          // sh 'docker cp node:/app/dist/theTipTop-front  /tmp'
-          sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
+          //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
       }
     } 
 
