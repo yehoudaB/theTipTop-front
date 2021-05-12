@@ -5,7 +5,7 @@ WORKDIR /usr/src/theTipTop-front
 
 COPY . .
 RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
-RUN  npm build --prod
+RUN  npm run build --prod
 
 
 ### STAGE 2: Run ###
