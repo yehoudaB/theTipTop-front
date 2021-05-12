@@ -2,11 +2,11 @@
 FROM node:lts-alpine3.13 as node
 
 WORKDIR /usr/src/theTipTop-front
-COPY package*.json ./
 
-RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
 COPY . .
-RUN npm run build
+RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
+
+
 
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
