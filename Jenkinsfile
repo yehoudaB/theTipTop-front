@@ -7,7 +7,12 @@ pipeline {
         checkout scm
       }
     }
-
+    stage('copy to nginx') {
+     
+        steps {
+            sh 'docker rm /usr/share/nginx/html/'
+        }
+    }
     stage('run compose') {
       steps {
         sh 'docker-compose  up -d'
@@ -25,13 +30,7 @@ pipeline {
         sh ' npm install '
         sh 'npm run ng build --prod'
       }
-    }
-
-    stage('copy to nginx') {
-      agent any
-       steps {
-          sh 'docker cp  /app/dist/theTipTop-front node:/usr/share/nginx/html'
-      }
+    
     }
     
   }
