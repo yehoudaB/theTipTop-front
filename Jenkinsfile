@@ -23,16 +23,18 @@ pipeline {
 
       }
       steps {
-        
-        sh ' npm install '
-        sh 'npm run ng build --prod'
+        sh 'ls -a'
+        sh 'pwd'
+        //sh ' npm install '
+        //sh 'npm run ng build --prod'
+
       }
     }
     stage('copy to nginx') { 
       agent any
        steps {
-          sh 'docker cp node:/app/dist/theTipTop-front  /tmp'
-          sh 'docker cp /tmp/dist/theTipTop-front  front-app:/usr/share/nginx/html/'
+         // sh 'docker cp node:/app/dist/theTipTop-front  /tmp'
+          sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
       }
     } 
 
