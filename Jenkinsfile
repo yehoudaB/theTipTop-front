@@ -25,8 +25,8 @@ pipeline {
         }
         stage('install') {
             agent {
-        docker { image 'node:14' }
-    }
+                docker { image 'node:latest' }
+            }
                 sh 'npm run  build --prod'
                 
             }
