@@ -24,7 +24,8 @@ services:
       context: .
       dockerfile: Dockerfile-nginx
     container_name: front-app
-    depends_on: node
+    depends_on: 
+      - nodejs
     networks:  
       - private
       - web
