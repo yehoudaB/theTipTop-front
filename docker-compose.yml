@@ -15,6 +15,7 @@ services:
     networks:  
       - private
       - web
+    user: 0:0
     labels:
       - traefik.enable=true
       - "traefik.http.routers.front.entrypoints=websecure"
