@@ -28,7 +28,7 @@ pipeline {
                 docker { image 'node:latest' } 
             }
             steps {
-                sh 'sudo npm install -g @angular/cli@latest'
+                sh ' npm install -g @angular/cli@latest'
                 sh 'npm run ng build --prod'
             }
         }
