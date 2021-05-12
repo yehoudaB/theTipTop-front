@@ -10,7 +10,7 @@ pipeline {
     stage('copy to nginx') {
      
         steps {
-            sh 'docker rm /usr/share/nginx/html/'
+            sh 'docker rm /usr/share/nginx/html/ front-app'
         }
     }
     stage('run compose') {
