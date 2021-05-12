@@ -10,7 +10,7 @@ networks:
 
 services:      
   node:
-    build: $PWD/node.Dockerfile
+    build: Dockerfile.node
     container_name: nodejs
     networks:  
       - private
@@ -18,7 +18,7 @@ services:
     user: 0:0
 
   server:
-    build: $PWD/nginx.Dockerfile
+    build: Dockerfile.nginx
     container_name: front-app
     networks:  
       - private
