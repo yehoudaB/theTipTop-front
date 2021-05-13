@@ -41,7 +41,7 @@ pipeline {
         sh 'ls -a'
      
         sh 'pwd'
-        sh 'cp /usr/share/nginx/code-source/dist/theTipTop-front /usr/share/nginx/html/'
+        sh 'cp ./dist/theTipTop-front /usr/share/nginx/html/'
       }
     }
     
