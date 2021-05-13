@@ -28,10 +28,7 @@ pipeline {
         sh ' npm install '
         sh 'npm run ng build --prod'
         sh 'ls -a'
-      }
      
-       steps {
-         sh 'ls -a'
         sh 'pwd'
         sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
           //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
