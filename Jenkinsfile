@@ -34,7 +34,7 @@ pipeline {
           //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
       }
     }
-        stage('install') {
+        stage('copy') {
           agent any
 
           steps {
