@@ -15,7 +15,18 @@ pipeline {
       }
     }
 
-    stage('install') {
+   
+    stage('copy') {
+          agent any
+
+          steps {
+            sh 'ls -a'
+     
+            sh 'pwd'
+            sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
+          }
+        } 
+   stage('install') {
       agent {
         docker {
           image 'node:latest'
@@ -33,17 +44,6 @@ pipeline {
       
       }
     }
-    stage('copy') {
-          agent any
-
-          steps {
-            sh 'ls -a'
-     
-            sh 'pwd'
-            sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
-          }
-        } 
-  
     
   }
 }
