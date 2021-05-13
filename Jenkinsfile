@@ -30,11 +30,10 @@ pipeline {
         sh 'ls -a'
      
         sh 'pwd'
-        sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
-          //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
+      
       }
     }
-        stage('copy') {
+    stage('copy') {
           agent any
 
           steps {
