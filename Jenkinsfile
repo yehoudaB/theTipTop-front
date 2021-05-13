@@ -41,7 +41,7 @@ pipeline {
         sh 'ls -a'
      
         sh 'pwd'
-        sh 'cp ./dist/ /usr/share/'
+        sh 'cp  -r ./dist/ /usr/share/'
       }
     }
     
