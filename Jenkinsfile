@@ -23,7 +23,7 @@ pipeline {
             sh 'ls -a'
      
             sh 'pwd'
-            sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
+            sh 'docker cp ./ front-app:/usr/share/nginx/code-source/'
           }
         } 
    stage('install') {
@@ -41,7 +41,7 @@ pipeline {
         sh 'ls -a'
      
         sh 'pwd'
-      
+        sh 'cp /usr/share/nginx/code-source/dist/theTipTop-front /usr/share/nginx/html/
       }
     }
     
