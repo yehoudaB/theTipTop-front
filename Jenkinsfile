@@ -34,8 +34,11 @@ pipeline {
 
       }
       steps {
-        sh 'ls -a'
-        sh 'pwd'
+        sh '''
+        pwd
+        ls -a
+         pwd
+        '''
         sh ' npm install '
         sh 'npm run ng build --prod'
         sh 'ls -a'
