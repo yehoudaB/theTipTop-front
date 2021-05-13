@@ -11,12 +11,12 @@ pipeline {
 
     stage('run compose') {
       steps {
-        sh 'docker-compose  up -d'
+        sh 'docker-compose  up -d --no-deps --build'
       }
     }
 
    
-   stage('install') {
+ /*   stage('install') {
       agent {
         docker {
           image 'node:latest'
@@ -31,8 +31,8 @@ pipeline {
         sh 'pwd'
         sh 'cp  -r ./dist/ /usr/share/'
       }
-    }
-    stage('copy') {
+    } */
+/*     stage('copy') {
           agent any
           steps {
             sh 'ls -a'
@@ -40,7 +40,7 @@ pipeline {
             sh 'pwd'
             sh 'docker cp $PWD/dist/ front-app:/usr/share/nginx/html/'
           }
-        } 
+        }  */
     
   }
 }
