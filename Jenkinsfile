@@ -33,6 +33,7 @@ pipeline {
         sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
           //sh 'docker cp ./dist/theTipTop-front  front-app:/usr/share/nginx/html/'
       }
+    }
         stage('install') {
           agent any
 
@@ -43,6 +44,7 @@ pipeline {
             sh 'docker cp ./dist/theTipTop-front/ front-app:/usr/share/nginx/html/'
           }
         } 
+  
     
   }
 }
