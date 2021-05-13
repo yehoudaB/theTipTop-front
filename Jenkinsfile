@@ -29,8 +29,6 @@ pipeline {
         sh 'npm run ng build --prod'
         sh 'ls -a'
       }
-    }
-    stage('copy to nginx') { 
      
        steps {
          sh 'ls -a'
