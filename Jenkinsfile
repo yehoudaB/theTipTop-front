@@ -16,16 +16,6 @@ pipeline {
     }
 
    
-    stage('copy') {
-          agent any
-
-          steps {
-            sh 'ls -a'
-     
-            sh 'pwd'
-            sh 'docker cp ./ front-app:/usr/share/nginx/code-source/'
-          }
-        } 
    stage('install') {
       agent {
         docker {
@@ -34,11 +24,6 @@ pipeline {
 
       }
       steps {
-        sh '''
-        pwd
-        ls -a
-         pwd
-        '''
         sh ' npm install '
         sh 'npm run ng build --prod'
         sh 'ls -a'
@@ -47,6 +32,15 @@ pipeline {
         sh 'cp  -r ./dist/ /usr/share/'
       }
     }
+    stage('copy') {
+          agent any
+          steps {
+            sh 'ls -a'
+     
+            sh 'pwd'
+            sh 'docker cp $PWD/dist/ front-app:/usr/share/nginx/html/'
+          }
+        } 
     
   }
 }
