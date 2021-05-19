@@ -21,4 +21,7 @@ services:
       - "traefik.http.routers.front.entrypoints=websecure"
       - traefik.http.routers.front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
       - "traefik.http.routers.front.tls.certresolver=lets-encr"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolallowmethods=GET,POST,PATCH,OPTIONS"
+      - "traefik.http.middlewares.testheader.headers.accesscontrolalloworigin=https://dsp4-5archio19-ah-je-gh-yb.fr"
+      - "traefik.http.middlewares.testheader.headers.accessControlAllowHeaders=Content-Type"
 
