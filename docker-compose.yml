@@ -9,7 +9,7 @@ networks:
       name: web
 
 services:      
-  front-server:
+  front:
     build: .
     container_name: front-app
     networks:  
