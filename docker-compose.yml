@@ -9,7 +9,7 @@ networks:
       name: web
 
 services:      
-  server:
+  front-server:
     build: .
     container_name: front-app
     networks:  
@@ -21,7 +21,9 @@ services:
       - "traefik.http.routers.front.entrypoints=websecure"
       - traefik.http.routers.front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
       - "traefik.http.routers.front.tls.certresolver=lets-encr"
-      - "traefik.http.middlewares.testheader.headers.accesscontrolallowmethods=GET,POST,PATCH,OPTIONS"
-      - "traefik.http.middlewares.testheader.headers.accesscontrolalloworigin=https://dsp4-5archio19-ah-je-gh-yb.fr"
-      - "traefik.http.middlewares.testheader.headers.accessControlAllowHeaders=Content-Type"
+      - traefik.front.headers.customResponseHeaders=Access-Control-Allow-Origin:*
+      - traefik.front.headers.Access-Control-Allow-Methods=GET, POST, OPTIONS
+      - traefik.front.headers.Access-Control-Allow-Headers=DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+    
+
 
