@@ -22,9 +22,4 @@ services:
       - traefik.http.routers.front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
       - "traefik.http.routers.front.tls.certresolver=lets-encr"
       
-      
-      - "traefik.http.middlewares.front.headers.customresponseheaders.Access-Control-Allow-Methods=POST, GET, PUT, OPTIONS, DELETE"
-      - "traefik.http.middlewares.front.headers.customresponseheaders.Access-Control-Allow-Origin=*"
-      - "traefik.http.middlewares.front.headers.customresponseheaders.Access-Control-Allow-Headers=x-requested-with, Content-Type,Authorization"
-      - "traefik.http.routers.front.middlewares=front"
-
+  
