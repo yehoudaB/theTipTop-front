@@ -16,7 +16,7 @@ export class LotService {
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
-  .set('Access-Control-Allow-Origin', 'http://localhost:4200')
+  .set('Access-Control-Allow-Origin', '**')
   .set('Access-Control-Allow-Headers', '*')
   .set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
 
