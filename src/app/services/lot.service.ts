@@ -11,9 +11,8 @@ export class LotService {
     private httpClient: HttpClient,
   ) { }
 
-  baseUrl:string = "https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/"
-  baseUrle:string = "http://localhost:9090/api/"
-  baseUrlzz:string = "/api/"
+
+  baseUrl:string = "https://api.dsp4-5archio19-ah-je-gh-yb.fr/"
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
@@ -22,7 +21,7 @@ export class LotService {
   .set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
 
 
-
+ 
   getLots(): Observable<any>{
     
     const url = this.httpClient.get(

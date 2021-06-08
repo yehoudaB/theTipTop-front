@@ -1,11 +1,11 @@
 {
     "/api": {
-        "target": "http://localhost:9090/",
-        "_target": "https://api.dsp4-5archio19-ah-je-gh-yb.fr/api/",
+        "_target": "http://localhost:9090/",
+        "target": "https://api.dsp4-5archio19-ah-je-gh-yb.fr/",
         "secure": false,
         "logLevel": "info",
         "cookieDomainRewrite": "*",
         "changeOrigin": true,
-        "pathRewrite": {"^/api" : ""}
+        "pathRewrite": {"^/" : ""}
       }
 }

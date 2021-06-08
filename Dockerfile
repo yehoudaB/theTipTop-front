@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 RUN npm install 
 RUN  npm run build --prod
+RUN  npm audit fix
 
 
 
