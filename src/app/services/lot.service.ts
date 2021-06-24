@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +10,15 @@ export class LotService {
 
   constructor(
     private httpClient: HttpClient,
-  ) { }
+  ) { 
+  }
 
 
-  baseUrl:string = "https://api.dsp4-5archio19-ah-je-gh-yb.fr/"
+  baseUrl:string = environment.baseUrl
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
-  .set('Access-Control-Allow-Origin', '**')
-  .set('Access-Control-Allow-Headers', '*')
-  .set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+
 
 
  
