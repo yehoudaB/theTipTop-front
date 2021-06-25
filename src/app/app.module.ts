@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { BigPrizeComponent } from './big-prize/big-prize.component';
 
   function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
@@ -33,14 +36,19 @@ import { AuthComponent } from './auth/auth.component';
     AppComponent,
     LotComponent,
     HomeComponent,
-    AuthComponent
+    AuthComponent,
+    NavbarComponent,
+    TicketComponent,
+    BigPrizeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    MatIconModule
+
   ],
   providers: [
     {
