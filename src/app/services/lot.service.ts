@@ -18,6 +18,7 @@ export class LotService {
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
+  .set('Content-Security-Policy', 'default-src self')
 
 
 
