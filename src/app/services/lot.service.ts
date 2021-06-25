@@ -18,7 +18,7 @@ export class LotService {
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
-  .set('Content-Security-Policy', '*');
+  .set('Content-Security-Policy', `frame-src 'self'; frame-ancestors 'self'; object-src 'none';",`);
 
 
 
