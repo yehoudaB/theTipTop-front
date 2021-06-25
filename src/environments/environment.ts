@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: '/api',
-  logoutUrl: 'http://localhost:4200'
+  baseUrl: 'https://api.dsp4-5archio19-ah-je-gh-yb.fr/',
+  logoutUrl: 'http://localhost:4200/'
 };
 
 /*
