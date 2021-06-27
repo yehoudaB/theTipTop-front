@@ -9,12 +9,11 @@ import { ObjectService } from '../services/object.service';
 export class TicketComponent implements OnInit {
 
   constructor(private objectService: ObjectService) { }
-  //jai mis lots a la place de tickets pour le moment. mais c pour tester l'api car tickets est vide et il faut que je restructure
 
-  public tickets = this.objectService.getObjects('lots');
+  public tickets = this.objectService.getObjects('tickets');
   public valueTest:number = 0;
   ngOnInit(): void {
-    this.objectService.getObjects('lots').subscribe({
+    this.objectService.getObjects('tickets').subscribe({
       next(value: any){
         console.log(value)
       },
@@ -31,7 +30,7 @@ export class TicketComponent implements OnInit {
 
   showTime(){
     setInterval(() => {        
-      this.valueTest  =Math.round(Math.random() * 10)
+      this.valueTest  = Math.round(Math.random() * 10)
     }, 1000);
   }
   
