@@ -11,7 +11,7 @@ pipeline {
 
     stage('run compose') {
       steps {
-        sh 'docker-compose  up -d --no-deps --build'
+        sh 'docker-compose  up -d --no-deps --build  --force-recreate'
       }
     }
 
