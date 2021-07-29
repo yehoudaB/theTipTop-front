@@ -10,7 +10,7 @@ pipeline {
 
     stage('run compose') {
       steps {
-        sh 'docker-compose  up -d --no-deps --build  --force-recreate'
+        sh 'docker-compose  up -d '
       }
     }
 
@@ -21,18 +21,12 @@ pipeline {
             echo 'test with karma here'
           }
         }
-        stage('build && SonarQube analysis') {
-          steps {
-            container('SonarQubeScanner') {
-            withSonarQubeEnv('SonarQube') {
-                sh "/usr/local/sonar-scanner"
-            }
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-            }
-            }
-          }
+        stage('SonarQube analysis') {
+          def scannerHome = tool 'sonarqube';
+          withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
+            sh "${scannerHome}/bin/sonar-scanner"
         }
+  }
       }
     }
 
