@@ -18,10 +18,10 @@ pipeline {
       parallel {
         stage('test karma') {
           steps {
-              echo 'test with karma here'
-            }
+            echo 'test with karma here'
           }
         }
+      
 
         stage('build && SonarQube analysis') {
           steps {
