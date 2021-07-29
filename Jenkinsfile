@@ -21,12 +21,15 @@ pipeline {
             echo 'test with karma here'
           }
         }
-      
-
         stage('build && SonarQube analysis') {
           steps {
-            withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'tokenB') {
-              sh "${scannerHome}/bin/sonar-scanner"
+            container('SonarQubeScanner') {
+            withSonarQubeEnv('SonarQube') {
+                sh "/usr/local/sonar-scanner"
+            }
+            timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+            }
             }
           }
         }
