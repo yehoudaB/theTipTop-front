@@ -21,16 +21,18 @@ pipeline {
             echo 'test with karma here'
           }
         }
+        
         stage('SonarQube analysis') {
-  
           steps {
-            def scannerHome = tool 'sonarqube';
+            script {
+              scannerHome = tool 'sonarqube'
+            }
             withSonarQubeEnv('sonarqube') {
               sh "${scannerHome}/bin/sonar-scanner"
             }
-          }
-
         }
+      }
+
       }
     }
   }
