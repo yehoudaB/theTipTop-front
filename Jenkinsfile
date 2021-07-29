@@ -10,7 +10,7 @@ pipeline {
 
     stage('run compose') {
       steps {
-        sh 'docker-compose  up -d '
+        sh 'docker-compose  up -d 
       }
     }
 
@@ -22,10 +22,13 @@ pipeline {
           }
         }
         stage('SonarQube analysis') {
-          def scannerHome = tool 'sonarqube';
-          withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
-            sh "${scannerHome}/bin/sonar-scanner"
-          }
+          steps{
+             def scannerHome = tool 'SonarScanner 4.0';
+              withSonarQubeEnv('sonarqube') { 
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+          } 
+         
         }
       }
     }
