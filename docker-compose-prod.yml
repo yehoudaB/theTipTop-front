@@ -12,6 +12,8 @@ services:
   prod-front:
     build: .
     container_name: prod-front-app
+    image: prod-front-app
+    container_name: prod-front-app
     networks:  
       - private
       - web

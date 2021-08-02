@@ -11,6 +11,8 @@ networks:
 services:      
   dev-front:
     build: .
+    image: dev-front-app
+    container_name: dev-front-app
     container_name: dev-front-app
     networks:  
       - private

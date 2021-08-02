@@ -21,7 +21,7 @@ pipeline {
 
       steps {
         script {
-          if (env.BRANCH_NAME == 'dev') {
+          if (env.BRANCH_NAME == 'master') {
             
               echo "deploying in prod : ${params.DEPLOY_IN_PROD}"
             if (params.DEPLOY_IN_PROD) {

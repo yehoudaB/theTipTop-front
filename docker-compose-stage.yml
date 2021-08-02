@@ -12,6 +12,8 @@ services:
   stage-front:
     build: .
     container_name: stage-front-app
+    image: stage-front-app
+    container_name: stage-front-app
     networks:  
       - private
       - web
