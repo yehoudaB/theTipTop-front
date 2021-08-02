@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks: 
+  private:
+    external:
+      name: private
+  web:
+    external: 
+      name: web
+
+services:      
+  stage-front:
+    build: .
+    container_name: stage-front-app
+    networks:  
+      - private
+      - web
+    user: 0:0
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.stage-front.entrypoints=websecure"
+      - traefik.http.routers.stage-front.rule=Host(`stage.dsp4-5archio19-ah-je-gh-yb.fr`)
+      - "traefik.http.routers.stage-front.tls.certresolver=lets-encr"
+      
+  

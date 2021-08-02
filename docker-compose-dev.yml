@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks: 
+  private:
+    external:
+      name: private
+  web:
+    external: 
+      name: web
+
+services:      
+  dev-front:
+    build: .
+    container_name: dev-front-app
+    networks:  
+      - private
+      - web
+    user: 0:0
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.dev-front.entrypoints=websecure"
+      - traefik.http.routers.dev-front.rule=Host(`dev.dsp4-5archio19-ah-je-gh-yb.fr`)
+      - "traefik.http.routers.dev-front.tls.certresolver=lets-encr"
+      
+  

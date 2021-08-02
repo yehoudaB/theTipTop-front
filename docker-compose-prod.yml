@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks: 
+  private:
+    external:
+      name: private
+  web:
+    external: 
+      name: web
+
+services:      
+  prod-front:
+    build: .
+    container_name: prod-front-app
+    networks:  
+      - private
+      - web
+    user: 0:0
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.prod-front.entrypoints=websecure"
+      - traefik.http.routers.prod-front.rule=Host(`dsp4-5archio19-ah-je-gh-yb.fr`)
+      - "traefik.http.routers.prod-front.tls.certresolver=lets-encr"
+      
+  

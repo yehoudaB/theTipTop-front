@@ -9,8 +9,22 @@ pipeline {
     }
 
     stage('run compose') {
+
       steps {
-        sh 'docker-compose  up -d --no-deps --build  --force-recreate'
+        script {
+          if (env.BRANCH_NAME == 'dev') {
+            if (params.DEPLOY_IN_PROD) {
+              echo "deploying in prod : ${params.DEPLOY_IN_PROD}"
+              sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
+            } else {
+                sh '''
+                    docker-compose -f docker-compose-stage.yml  -d --no-deps --build
+                  '''
+             }
+          } else if(env.BRANCH_NAME == 'dev'){
+             sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
+          }
+        }
       }
     }
 
