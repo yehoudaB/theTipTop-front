@@ -1,5 +1,14 @@
 pipeline {
   agent any
+
+   parameters {
+    booleanParam(
+      name: 'DEPLOY_IN_PROD',
+      description: 'deploy in production ?',
+      defaultValue: false,
+    )
+  }
+  
   stages {
     stage('Checkout') {
       steps {
