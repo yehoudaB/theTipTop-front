@@ -28,7 +28,7 @@ pipeline {
               sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
             } else {
                 sh '''
-                    docker-compose -f docker-compose-stage.yml  -d --no-deps --build
+                    docker-compose -f docker-compose-stage.yml up -d --no-deps --build
                   '''
              }
           } else if(env.BRANCH_NAME == 'dev'){
