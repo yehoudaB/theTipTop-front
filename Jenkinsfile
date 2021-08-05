@@ -84,14 +84,14 @@ pipeline {
               protocol: 'https',
               nexusUrl: 'nexus.dsp4-5archio19-ah-je-gh-yb.fr',
               groupId: 'com.dsp',
-              version: version,
+              version: "${packageJSONVersion}",
               repository: 'theTipTop_front/',
               credentialsId: 'nexus3',
               artifacts: [
                   [artifactId: 'theTipTop',
                   type:'tgz',
                   classifier: '',
-                  file: "the-tip-top-front-${version}.tgz"]
+                  file: "the-tip-top-front-${packageJSONVersion}.tgz"]
               ]
             )
           }
