@@ -83,11 +83,11 @@ pipeline {
               nexusVersion: 'nexus3',
               protocol: 'https',
               nexusUrl: 'nexus.dsp4-5archio19-ah-je-gh-yb.fr',
-              version: "${packageJSONVersion}",
+            
               repository: 'theTipTop_front/',
               credentialsId: 'nexus3',
               artifacts: [
-                  [artifactId: '',
+                  [artifactId: 'the-tip-top-front',
                   type:'tgz',
                   classifier: '',
                   file: "the-tip-top-front-${packageJSONVersion}.tgz"]
