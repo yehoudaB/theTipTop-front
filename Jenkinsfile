@@ -87,7 +87,7 @@ pipeline {
               repository: 'theTipTop_front/',
               credentialsId: 'nexus3',
               artifacts: [
-                  [artifactId: 'theTipTop',
+                  [artifactId: '',
                   type:'tgz',
                   classifier: '',
                   file: "the-tip-top-front-${packageJSONVersion}.tgz"]
