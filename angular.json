@@ -75,8 +75,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "theTipTop-front:build",
-            "proxyConfig": "./proxy.conf.json"
+            "browserTarget": "theTipTop-front:build"
+            //, "proxyConfig": "./proxy.conf.json" utile que pour tester l'api local
           },
           "configurations": {
             "production": {

@@ -27,10 +27,10 @@ pipeline {
             if (params.DEPLOY_IN_PROD) {
               sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
             } else {
-                sh '''
+              /*  sh '''
                     docker-compose -f docker-compose-stage.yml up -d --no-deps --build
                   '''
-             }
+            */ }
           } else if(env.BRANCH_NAME == 'dev'){
              sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
           }
@@ -53,8 +53,47 @@ pipeline {
               sh 'ls -a'
             }
             withSonarQubeEnv('sonarqube') {
-              sh "${scannerHome}/bin/sonar-scanner"
+             // sh "${scannerHome}/bin/sonar-scanner"
             }
+          }
+        }
+      }
+    }
+     stage('Deploy Artifact To Nexus') {
+      when {
+        allOf {
+          branch 'master'
+          expression { !params.DEPLOY_IN_PROD }
+        }
+      }
+      steps {
+        
+
+        script {
+          filesByGlob = './'
+          artifactPath = './'
+          version= "npm run env | grep npm_package_name | cut -d '=' -f 2"
+          // Assign to a boolean response verifying If the artifact name exists
+          artifactExists = fileExists artifactPath
+          if (artifactExists) {
+            nexusArtifactUploader(
+              nexusVersion: 'nexus3',
+              protocol: 'https',
+              nexusUrl: 'nexus.dsp4-5archio19-ah-je-gh-yb.fr',
+              groupId: 'com.dsp',
+              version: version,
+              repository: 'theTipTop_front/',
+              credentialsId: 'nexus3',
+              artifacts: [
+                  [artifactId: 'theTipTop',
+                  type:'tgz',
+                  classifier: '',
+                  file: "the-tip-top-front-${version}.tgz"]
+              ]
+            )
+          }
+          else {
+            error "*** File: ${artifactPath}, could not be found"
           }
         }
       }
