@@ -59,6 +59,13 @@ pipeline {
         }
       }
     }
+    stage('package') {
+      steps {
+        nodejs('<name of your Node installation>'){
+            npm pack
+        }
+      }
+    }
      stage('Deploy Artifact To Nexus') {
       when {
         allOf {
