@@ -60,8 +60,6 @@ pipeline {
       }
     }
      stage('Deploy Artifact To Nexus') {
-     }
-     stage('Deploy Artifact To Nexus') {
       when {
         allOf {
           branch 'master'
@@ -74,7 +72,7 @@ pipeline {
         script {
           filesByGlob = './'
           artifactPath = './'
-          def version = " npm run env | grep npm_package_version | cut -d '=' -f 2"
+          def version = "npm run env | grep npm_package_version | cut -d '=' -f 2"
           // Assign to a boolean response verifying If the artifact name exists
           artifactExists = fileExists artifactPath
           if (artifactExists) {
