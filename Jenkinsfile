@@ -73,12 +73,13 @@ pipeline {
           filesByGlob = './'
           artifactPath = './'
           
-           def packageJSON = readJSON file: 'package.json'
-            def packageJSONVersion = packageJSON.version
-            echo "${packageJSONVersion}"
+          def packageJSON = readJSON file: 'package.json'
+          def packageJSONVersion = packageJSON.version
+          echo "${packageJSONVersion}"
           // Assign to a boolean response verifying If the artifact name exists
           artifactExists = fileExists artifactPath
           if (artifactExists) {
+            sh 'npm  publish'
             nexusArtifactUploader(
               nexusVersion: 'nexus3',
               protocol: 'https',
