@@ -72,7 +72,10 @@ pipeline {
         script {
           filesByGlob = './'
           artifactPath = './'
-          def version = "npm run env | grep npm_package_version | cut -d '=' -f 2"
+          
+           def packageJSON = readJSON file: 'package.json'
+            def packageJSONVersion = packageJSON.version
+            echo "${packageJSONVersion}"
           // Assign to a boolean response verifying If the artifact name exists
           artifactExists = fileExists artifactPath
           if (artifactExists) {
