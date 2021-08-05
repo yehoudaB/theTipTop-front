@@ -74,7 +74,7 @@ pipeline {
         script {
           filesByGlob = './'
           artifactPath = './'
-          version= echo " npm run env | grep npm_package_version | cut -d '=' -f 2"
+          def version = " npm run env | grep npm_package_version | cut -d '=' -f 2"
           // Assign to a boolean response verifying If the artifact name exists
           artifactExists = fileExists artifactPath
           if (artifactExists) {
