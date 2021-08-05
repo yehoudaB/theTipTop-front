@@ -27,10 +27,10 @@ pipeline {
             if (params.DEPLOY_IN_PROD) {
               sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
             } else {
-              /*  sh '''
+               sh '''
                     docker-compose -f docker-compose-stage.yml up -d --no-deps --build
                   '''
-            */ }
+             }
           } else if(env.BRANCH_NAME == 'dev'){
              sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
           }
@@ -53,7 +53,7 @@ pipeline {
               sh 'ls -a'
             }
             withSonarQubeEnv('sonarqube') {
-             // sh "${scannerHome}/bin/sonar-scanner"
+              sh "${scannerHome}/bin/sonar-scanner"
             }
           }
         }
