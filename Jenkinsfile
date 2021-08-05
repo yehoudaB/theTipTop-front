@@ -83,7 +83,6 @@ pipeline {
               nexusVersion: 'nexus3',
               protocol: 'https',
               nexusUrl: 'nexus.dsp4-5archio19-ah-je-gh-yb.fr',
-              groupId: 'com.dsp',
               version: "${packageJSONVersion}",
               repository: 'theTipTop_front/',
               credentialsId: 'nexus3',
