@@ -91,7 +91,7 @@ pipeline {
                   [artifactId: 'theTipTop',
                   type:'tgz',
                   classifier: '',
-                  file: "the-tlsip-top-front-${packageJSONVersion}.tgz"]
+                  file: "the-tip-top-front-${packageJSONVersion}.tgz"]
               ]
             )
           }
