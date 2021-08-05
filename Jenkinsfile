@@ -79,7 +79,6 @@ pipeline {
           // Assign to a boolean response verifying If the artifact name exists
           artifactExists = fileExists artifactPath
           if (artifactExists) {
-            sh 'npm  publish'
             nexusArtifactUploader(
               nexusVersion: 'nexus3',
               protocol: 'https',
@@ -92,7 +91,7 @@ pipeline {
                   [artifactId: 'theTipTop',
                   type:'tgz',
                   classifier: '',
-                  file: "the-tip-top-front-${packageJSONVersion}.tgz"]
+                  file: "the-tlsip-top-front-${packageJSONVersion}.tgz"]
               ]
             )
           }
