@@ -7,7 +7,7 @@ pipeline {
       description: 'deploy in production ?',
       defaultValue: false,
     )
-  }
+   }
 
   stages {
     stage('Checkout') {
@@ -65,8 +65,9 @@ pipeline {
     stage('package') {
       steps {
         nodejs('nodeJs'){
-            npm -v
-            npm pack
+            
+            sh 'npm - v'
+            sh 'npm pack'
         }
       }
     }
@@ -111,7 +112,7 @@ pipeline {
           }
         }
       }
-    }
+     }
 
 
   }
