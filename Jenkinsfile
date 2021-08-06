@@ -18,24 +18,27 @@ pipeline {
     }
 
     stage('run compose') {
+      steps{
+        sh 'hello'
+      }
 
-     /*  steps {
-        script {
-          if (env.BRANCH_NAME == 'master') {
-            
-              echo "deploying in prod : ${params.DEPLOY_IN_PROD}"
-            if (params.DEPLOY_IN_PROD) {
-              sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
-            } else {
-               sh '''
-                    docker-compose -f docker-compose-stage.yml up -d --no-deps --build
-                  '''
-             }
-          } else if(env.BRANCH_NAME == 'dev'){
-             sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
+      /*  steps {
+          script {
+            if (env.BRANCH_NAME == 'master') {
+              
+                echo "deploying in prod : ${params.DEPLOY_IN_PROD}"
+              if (params.DEPLOY_IN_PROD) {
+                sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
+              } else {
+                sh '''
+                      docker-compose -f docker-compose-stage.yml up -d --no-deps --build
+                    '''
+              }
+            } else if(env.BRANCH_NAME == 'dev'){
+              sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
+            }
           }
-        }
-      } */
+        } */
     }
 
     stage('tests') {
