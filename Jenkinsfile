@@ -19,7 +19,7 @@ pipeline {
 
     stage('run compose') {
       steps{
-        sh 'hello'
+        sh ''
       }
 
       /*  steps {
