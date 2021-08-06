@@ -19,7 +19,7 @@ pipeline {
 
     stage('run compose') {
 
-      steps {
+     /*  steps {
         script {
           if (env.BRANCH_NAME == 'master') {
             
@@ -35,7 +35,7 @@ pipeline {
              sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
           }
         }
-      }
+      } */
     }
 
     stage('tests') {
