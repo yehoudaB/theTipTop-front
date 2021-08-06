@@ -66,7 +66,7 @@ pipeline {
       steps {
         nodejs('nodeJs'){
             
-            sh 'npm - v'
+            sh 'npm -v'
             sh 'npm pack'
         }
       }
