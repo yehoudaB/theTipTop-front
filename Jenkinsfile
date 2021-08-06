@@ -63,11 +63,7 @@ pipeline {
       }
     }
     stage('package') {
-      steps {
-        nodejs('nodeJs'){
-            npm pack
-        }
-      }
+     
     }
      stage('Deploy Artifact To Nexus') {
       when {
