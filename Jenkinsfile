@@ -62,9 +62,7 @@ pipeline {
         }
       }
     }
-    stage('package') {
-     
-    }
+   
      stage('Deploy Artifact To Nexus') {
       when {
         allOf {
