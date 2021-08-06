@@ -62,7 +62,13 @@ pipeline {
         }
       }
     }
-   
+    stage('package') {
+      steps {
+        nodejs('nodeJs'){
+            npm pack
+        }
+      }
+    }
      stage('Deploy Artifact To Nexus') {
       when {
         allOf {
@@ -88,6 +94,7 @@ pipeline {
               protocol: 'https',
               nexusUrl: 'nexus.dsp4-5archio19-ah-je-gh-yb.fr',
               version: "${packageJSONVersion}",
+              groupId: 'com.dsp',
               repository: 'theTipTop_front/',
               credentialsId: 'nexus3',
               artifacts: [
