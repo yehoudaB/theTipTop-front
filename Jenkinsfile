@@ -17,7 +17,7 @@ pipeline {
       }
     }
 
-    stage('run compose') 
+    stage('run compose') {
       steps {
           script {
             if (env.BRANCH_NAME == 'master') {
