@@ -61,7 +61,7 @@ pipeline {
     }
     stage('package') {
       steps {
-        nodejs('<name of your Node installation>'){
+        nodejs('nodeJs'){
             npm pack
         }
       }
