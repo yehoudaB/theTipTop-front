@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  ticket:number | undefined;
+  
+  form: FormGroup = this.formBuilder.group({
+    ticket : ['', Validators.pattern('^[0-9]+')],
+    
+  });
+  constructor(
+    public formBuilder: FormBuilder,
+  ) { }
+
+
+
+
+  observeForm(){
+    this.form.valueChanges.subscribe(
+      (f)=>{
+      //console.log(this.form.controls)
+      if(this.form.controls.ticket.valid ){
+        console.log(this.form.controls.ticket.value)
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

@@ -18,16 +18,29 @@ export class ObjectService {
 
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
+  .set('charset', 'utf-8')
   .set('Content-Security-Policy', `frame-src 'self'; frame-ancestors 'self'; object-src 'none';",`);
 
 
 
  
   getObjects(endpoint: string): Observable<any>{
-    
-    const url = this.httpClient.get(
+    const resp = this.httpClient.get(
       this.baseUrl + endpoint, {'headers' : this.headers 
     });
-    return url
+    return resp;
   }
+
+  saveObject(endpoint: string, entity: Object): Observable<any>{
+    const resp = this.httpClient.post(
+      this.baseUrl + endpoint, entity,{'headers' : this.headers 
+    }); 
+    return resp;
+  }
+
+  saveObjects(objectsUrl: string, data: any): Observable<any> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', charset: 'utf-8'});
+    return this.httpClient.post(this.baseUrl + objectsUrl, data, {'headers' : this.headers , observe : 'response'});
+  }
+
 }

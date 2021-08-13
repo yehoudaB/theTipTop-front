@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LotService } from '../services/lot.service';
+import { ObjectService } from '../services/object.service';
 
 @Component({
   selector: 'app-lot',
@@ -8,12 +8,12 @@ import { LotService } from '../services/lot.service';
 })
 export class LotComponent implements OnInit {
 
-  constructor(private lotService:LotService) { }
+  constructor(private objectService:ObjectService) { }
 
-  public lots = this.lotService.getLots();
+  public lots = this.objectService.getObjects('lots');
   public valueTest:number = 0;
   ngOnInit(): void {
-    this.lotService.getLots().subscribe({
+    this.objectService.getObjects('lots').subscribe({
       next(value){
         console.log(value)
       },

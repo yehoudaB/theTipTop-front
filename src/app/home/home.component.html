@@ -1,1 +1,15 @@
-<p>home works! testing live change !</p>
+<br><br><br>
+<div class="container mt-5" >
+    <h1 class="text-center mt-5">Jouez  !!</h1>
+    <mat-card class="col-md-8 offset-md-2 col-sm-10">
+        <form [formGroup]="form" >
+            <mat-form-field appearance="outline" class="col-sm-6 col-md-6 offset-md-3 mt-3 ">
+                <mat-label>Numero de ticket</mat-label>
+                <input type="text"  maxlength="5" minlength="5" matInput placeholder="ticket"   formControlName="ticket" required>
+                <mat-icon matSuffix>place</mat-icon>
+            </mat-form-field>
+
+             {{ticket | json }}    
+        </form>
+    </mat-card>
+</div>

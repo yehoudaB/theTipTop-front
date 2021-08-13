@@ -12,7 +12,10 @@ import { AuthComponent } from './auth/auth.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { BigPrizeComponent } from './big-prize/big-prize.component';
-
+import {MatInputModule} from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
   function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
       keycloak.init({
@@ -47,7 +50,16 @@ import { BigPrizeComponent } from './big-prize/big-prize.component';
     BrowserAnimationsModule,
     HttpClientModule,
     KeycloakAngularModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    BrowserModule,
+    MatFormFieldModule ,
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    AppRoutingModule, BrowserAnimationsModule, MatIconModule, MatIconModule, MatCardModule, MatCardModule, ReactiveFormsModule, MatIconModule,
+    
+ 
 
   ],
   providers: [
