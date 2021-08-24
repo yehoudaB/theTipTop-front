@@ -9,7 +9,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
-  
   },
   "private": false,
   "dependencies": {
@@ -24,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
     "@popperjs/core": "^2.9.2",
+    "@zxing/library": "^0.18.3",
+    "@zxing/ngx-scanner": "^3.2.0",
     "bootstrap": "^5.0.1",
     "chokidar": "^3.5.2",
     "css-select": "^4.1.3",

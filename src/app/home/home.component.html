@@ -1,15 +1,24 @@
 <br><br><br>
 <div class="container mt-5" >
     <h1 class="text-center mt-5">Jouez  !!</h1>
-    <mat-card class="col-md-8 offset-md-2 col-sm-10">
+    <mat-card class="col-md-8 offset-md-2 ">
         <form [formGroup]="form" >
-            <mat-form-field appearance="outline" class="col-sm-6 col-md-6 offset-md-3 mt-3 ">
+            <mat-form-field appearance="outline" class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
                 <mat-label>Numero de ticket</mat-label>
-                <input type="text"  maxlength="5" minlength="5" matInput placeholder="ticket"   formControlName="ticket" required>
-                <mat-icon matSuffix>place</mat-icon>
+                <input type="text" minlength="6" maxlength="18"  matInput placeholder="ticket" class="col-sm-12" 
+                    formControlName="ticket" required>
+                
+                <mat-icon matSuffix class="material-icons-outlined" (click)="showCam()">
+                    qr_code_scanner
+                </mat-icon>
+
+                <mat-error *ngIf=" this.form.controls.ticket?.errors ">
+                    <span>ticket inconnu</span>
+                </mat-error>
             </mat-form-field>
 
-             {{ticket | json }}    
+            <zxing-scanner  (scanSuccess)="onCodeResult($event)" *ngIf="isShowingCam" [tryHarder]="true"></zxing-scanner>
+           
         </form>
     </mat-card>
 </div>
