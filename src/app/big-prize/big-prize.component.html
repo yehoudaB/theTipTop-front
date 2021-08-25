@@ -1,7 +1,7 @@
 <div class="container">
-    
+<br><br>    
 <link href='//fonts.googleapis.com/css?family=Lato:900,400' rel='stylesheet' type='text/css'>
-<h1 class="text-center">Grand lot</h1>
+<h1 class="text-center">Tirage au sort du Grand lot</h1>
 
 <div class="wrapper">
     <svg class="hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 206" preserveAspectRatio="none">
@@ -10,5 +10,22 @@
     </svg>
 </div>
 <br><br>
-<h2 class="text-center">10 jours 12:10:12 avant le tirage du grand lot</h2>
+
+
+    <div class="col-md-4 offset-md-5"
+    simpleCountdown
+    [dateTo]="1631721600"
+    [language]="'fr'"
+    [styles]="
+    '
+    font-size: 26px;
+    text-align:center;
+    color: #FFF;
+    background-color: #93cb02;
+    padding: 18px 13px;
+    font-weight: bold;
+    min-width:40px;
+    margin:0 1px;
+    '
+    "></div> 
 </div>

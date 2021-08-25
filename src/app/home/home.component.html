@@ -1,5 +1,7 @@
-<br><br><br>
 <div class="container mt-5" >
+    <div class="col-md-2 offset-md-5 col-sm-2 offset-sm-2">
+        <img src="../../assets/logo/TTT-Logo-Color.png" alt="logo" srcset="" class="logo">
+    </div>
     <h1 class="text-center mt-5">Loterie</h1>
     <h3 class="text-center mt-3">Saisissez le numéro qui se trouve sur votre reçu</h3>
     <mat-card class="col-md-8 offset-md-2 ">
@@ -17,13 +19,12 @@
                     <span>ticket inconnu</span>
                 </mat-error>
             </mat-form-field>
-            <br> <i>demo: essayer avec : 82421464142613</i>
+            <br> <i>demo: essayer avec : 56789</i>
             <zxing-scanner  (scanSuccess)="onCodeResult($event)" *ngIf="isShowingCam" [tryHarder]="true"></zxing-scanner>
            
         </form>
     </mat-card>
-
-    <mat-card class="col-md-8 offset-md-2 mt-5 mb-5" *ngIf="ticketWon">
+    <mat-card class="col-md-8 offset-md-2 mt-5 mb-5" *ngIf="ticketWon && ticketWon.name ">
         <h2  class="text-center mt-3">Vous avez gagné !</h2>
         <img src="../../assets/cadeau.jpg" alt="cadeau" srcset=""  class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
         <div class="m-1  pb-1">

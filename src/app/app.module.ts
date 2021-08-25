@@ -16,6 +16,9 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import {MatButtonModule} from '@angular/material/button';
+import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
   function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
       keycloak.init({
@@ -46,6 +49,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   ],
   imports: [
     BrowserModule,
+    NgxSimpleCountdownModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -55,6 +59,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BrowserModule,
     MatFormFieldModule ,
     FormsModule,
+    MatButtonModule,
+    NgxSimpleCountdownModule,
+    ZXingScannerModule,
     MatInputModule,
     MatIconModule,
     AppRoutingModule, BrowserAnimationsModule, MatIconModule, MatIconModule, MatCardModule, MatCardModule, ReactiveFormsModule, MatIconModule,

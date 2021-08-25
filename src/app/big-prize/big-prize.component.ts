@@ -12,4 +12,8 @@ export class BigPrizeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onfinish(){
+
+  }
+
 }
