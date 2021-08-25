@@ -47,7 +47,7 @@ export class ObjectService {
 
   getCurrentUser(email: string): Observable<User>{
      const resp = this.httpClient.get(
-      this.baseUrl + 'users/'+ email, {'headers' : this.headers 
+      this.baseUrl + 'users/email/'+ email, {'headers' : this.headers 
     });
     return resp;
   }

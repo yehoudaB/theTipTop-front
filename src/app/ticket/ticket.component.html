@@ -1,17 +1,21 @@
 
-ici tickets
-<div *ngFor="let ticket of tickets | async">
-    <mat-card class="col-md-8 offset-md-2 mt-5 mb-5" *ngIf="ticket">
-        <h3  class="text-center mt-3">Vous avez gagné !</h3>
-        <img src="../../assets/cadeau.jpg" alt="cadeau" srcset=""  class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
-        <div class="m-1  pb-1">
-            <p><strong>numero de ticket: </strong>{{ticket?.name}}</p>
-            <p><strong>contenu du cadeau :</strong> {{ticket.lot?.name }}</p>
-            <p><strong>description : </strong>{{ticket.lot?.description }}</p>
-            <p><strong>valeur : </strong>{{ticket.lot?.price }} € </p>
-        </div>
-        <div class="text-center">
-            <button mat-raised-button class="green-tea-btn " routerLink="/tickets">Recevoir mon cadeau</button>
-        </div>
-    </mat-card>
+<div class="container mt-5" >
+    <div *ngFor="let ticket of tickets | async">
+        <mat-card class="col-md-8 offset-md-2 mt-5 mb-5" *ngIf=" keycloakProfile && ticket && ticket.user.email == keycloakProfile?.email"> 
+            <img src="../../assets/cadeau.jpg" alt="cadeau" srcset=""  class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
+            <div class="m-1  pb-1">
+                <p><strong>numero de ticket: </strong>{{ticket?.name}}</p>
+                <p><strong>contenu du cadeau :</strong> {{ticket.lot?.name }}</p>
+                <p><strong>description : </strong>{{ticket.lot?.description }}</p>
+                <p><strong>valeur : </strong>{{ticket.lot?.price }} € </p>
+            </div>
+            <div  *ngIf="!ticket.hadTheGift" class="text-center alert alert-warning">
+                Cadeau à réclamer !
+            </div> 
+            <div *ngIf="ticket.hadTheGift" class="text-center alert alert-success">
+                Cadeau Reçu.
+            </div> 
+        </mat-card>
+    </div>
 </div>
+<br><br><br>

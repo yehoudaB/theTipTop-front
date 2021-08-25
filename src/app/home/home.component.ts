@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Ticket } from '../models/ticket.model';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   keycloakProfile: KeycloakProfile | undefined;
   
-  ticketWon: Ticket | undefined;
+  ticketWon: Ticket = new Ticket();
 
   
   form: FormGroup = this.formBuilder.group({
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private objectService: ObjectService,
-    public keycloakService: KeycloakService
+    public keycloakService: KeycloakService,
+    private router: Router
   ) { }
 
 
@@ -46,7 +48,6 @@ export class HomeComponent implements OnInit {
           this.ticketWon = resp.find((ticketDb: Ticket) => 
             ticketDb.name == this.form.controls.ticket.value      
         );
-        console.log('aaaa'+ this.ticketWon)
         
           if(!this.ticketWon &&  this.form.controls.ticket.dirty){
             this.form.controls.ticket.setErrors({'unknowTicket': true});
@@ -95,7 +96,18 @@ export class HomeComponent implements OnInit {
     if(this.isLoggedIn){
       this.keycloakProfile = await this.keycloakService.loadUserProfile();
       this.objectService.getCurrentUser(this.keycloakProfile.email+'').subscribe(
-        resp => { console.log(resp)},
+        resp => { 
+          console.log(resp);
+          this.ticketWon.user= resp
+          console.log(this.ticketWon)
+          this.objectService.saveObject('tickets', this.ticketWon).subscribe(
+            resp => { console.log(resp)
+              this.router.navigate(['tickets'])
+            
+            },
+            err => { console.log(err)}
+          )
+        },
         err =>{ console.log(err)},
         () => {}
       )
