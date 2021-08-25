@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ObjectService } from '../services/object.service';
 import { map } from 'rxjs/operators';
 import { Ticket } from '../models/ticket.model';
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakProfile } from 'keycloak-js';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,7 +15,9 @@ export class HomeComponent implements OnInit {
   ticketNumber:number | undefined;
   isShowingCam:boolean =false;
   qrResultString: string | undefined;
+  isLoggedIn:boolean = false;
 
+  keycloakProfile: KeycloakProfile | undefined;
   
   ticketWon: Ticket | undefined;
 
@@ -25,7 +29,8 @@ export class HomeComponent implements OnInit {
  
   constructor(
     public formBuilder: FormBuilder,
-    private objectService: ObjectService
+    private objectService: ObjectService,
+    public keycloakService: KeycloakService
   ) { }
 
 
@@ -65,7 +70,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.isLoggedIn = await this.keycloakService.isLoggedIn();
     this.observeForm()
   }
 
@@ -82,6 +88,19 @@ export class HomeComponent implements OnInit {
       this.isShowingCam = false;
     } else {
       this.isShowingCam = true
+    }
+  }
+
+  async assignGift(){
+    if(this.isLoggedIn){
+      this.keycloakProfile = await this.keycloakService.loadUserProfile();
+      this.objectService.getCurrentUser(this.keycloakProfile.email+'').subscribe(
+        resp => { console.log(resp)},
+        err =>{ console.log(err)},
+        () => {}
+      )
+    } else {
+      this.keycloakService.login();
     }
   }
 }

@@ -24,14 +24,8 @@ export class TicketComponent implements OnInit {
         console.log("complete");
       }
     })
-    this.showTime()
   }
 
 
-  showTime(){
-    setInterval(() => {        
-      this.valueTest  = Math.round(Math.random() * 10)
-    }, 1000);
-  }
   
 }

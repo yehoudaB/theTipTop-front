@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class ObjectService {
     return resp;
   }
 
+
   saveObject(endpoint: string, entity: Object): Observable<any>{
     const resp = this.httpClient.post(
       this.baseUrl + endpoint, entity,{'headers' : this.headers 
@@ -41,6 +43,13 @@ export class ObjectService {
   saveObjects(objectsUrl: string, data: any): Observable<any> {
     const headers = new HttpHeaders({'Content-Type': 'application/json', charset: 'utf-8'});
     return this.httpClient.post(this.baseUrl + objectsUrl, data, {'headers' : this.headers , observe : 'response'});
+  }
+
+  getCurrentUser(email: string): Observable<User>{
+     const resp = this.httpClient.get(
+      this.baseUrl + 'users/'+ email, {'headers' : this.headers 
+    });
+    return resp;
   }
 
 }
