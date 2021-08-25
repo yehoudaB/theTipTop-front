@@ -1,6 +1,7 @@
 <br><br><br>
 <div class="container mt-5" >
-    <h1 class="text-center mt-5">Jouez  !!</h1>
+    <h1 class="text-center mt-5">Loterie</h1>
+    <h3 class="text-center mt-3">Saisissez le numéro qui se trouve sur votre reçu</h3>
     <mat-card class="col-md-8 offset-md-2 ">
         <form [formGroup]="form" >
             <mat-form-field appearance="outline" class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
@@ -16,9 +17,24 @@
                     <span>ticket inconnu</span>
                 </mat-error>
             </mat-form-field>
-
+            <i>demo: essayer avec : 82421464142613</i>
             <zxing-scanner  (scanSuccess)="onCodeResult($event)" *ngIf="isShowingCam" [tryHarder]="true"></zxing-scanner>
            
         </form>
     </mat-card>
+
+    <mat-card class="col-md-8 offset-md-2 mt-5 mb-5" *ngIf="ticketWon">
+        <h3  class="text-center mt-3">Vous avez gagné !</h3>
+        <img src="../../assets/cadeau.jpg" alt="cadeau" srcset=""  class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
+        <div class="m-1  pb-1">
+            <p><strong>numero de ticket: </strong>{{ticketWon?.name}}</p>
+            <p><strong>contenu du cadeau :</strong> {{ticketWon.lot?.name }}</p>
+            <p><strong>description : </strong>{{ticketWon.lot?.description }}</p>
+            <p><strong>valeur : </strong>{{ticketWon.lot?.price }} € </p>
+        </div>
+        <div class="text-center">
+            <button mat-raised-button class="green-tea-btn ">Recevoir mon cadeau</button>
+        </div>
+    </mat-card>
+    <br><br>
 </div>

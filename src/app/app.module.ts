@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import {MatButtonModule} from '@angular/material/button';
   function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
       keycloak.init({
@@ -56,6 +57,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     BrowserModule,
     MatFormFieldModule ,
     FormsModule,
+    MatButtonModule,
     ZXingScannerModule,
     MatInputModule,
     MatIconModule,

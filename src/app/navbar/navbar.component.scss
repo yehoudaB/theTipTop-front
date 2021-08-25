@@ -2,7 +2,7 @@
 @import '~material-bottom-nav';
 .bottom-nav {
     @include bottom-nav( 
-      $background-color: #009688, 
+      $background-color: #93cb02, 
       $active-color: #FFFFFF, 
       $inactive-color: #E0E0E0 
     );
@@ -13,7 +13,7 @@
 $grey-300: #E0E0E0;
 $grey-600: #757575;
 $red-500: #F44336;
-$teal-500: #009688;
+$teal-500: #93cb02;
 $purple-200: #BB86FC;
 $purple-500: #6200EE;
 $white: #FFFFFF;

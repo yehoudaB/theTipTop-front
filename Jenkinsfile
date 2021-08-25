@@ -33,6 +33,10 @@ pipeline {
             } else if(env.BRANCH_NAME == 'dev'){
               sh 'docker-compose -f docker-compose-dev.yml  up -d --no-deps --build'
             }
+             else {
+                
+                skipRemainingStages = true
+             }
           }
         } 
     }

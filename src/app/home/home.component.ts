@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   qrResultString: string | undefined;
 
   
+  ticketWon: Ticket | undefined;
+
+  
   form: FormGroup = this.formBuilder.group({
     ticket : ['', Validators.pattern('^[0-9]+')],
     
@@ -33,17 +36,14 @@ export class HomeComponent implements OnInit {
     if(parseInt(this.form.controls.ticket.value) > 10000){
       this.objectService.getObjects('tickets').subscribe(
         (resp: any) => {
-          //console.log(resp)
+          console.log(resp)
  
-          const ticketExist = resp.find((ticketDb: Ticket) => 
-            ticketDb.name == this.form.controls.ticket.value
-          );
-
+          this.ticketWon = resp.find((ticketDb: Ticket) => 
+            ticketDb.name == this.form.controls.ticket.value      
+        );
+        console.log('aaaa'+ this.ticketWon)
         
-          console.log(ticketExist)
-          if(ticketExist){
-            alert('on a trouvé ton ticket !')
-          }else {
+          if(!this.ticketWon &&  this.form.controls.ticket.dirty){
             this.form.controls.ticket.setErrors({'unknowTicket': true});
           }
           
