@@ -1,10 +1,10 @@
-<h1>Keycloak Angular Example</h1>
+<h1>Informations personnelles</h1>
 
 <button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
 <button *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
 
 <ng-container *ngIf="keycloakProfile">
-  <h2>User information</h2>
+  <h2>mon compte</h2>
   <table>
     <tr *ngIf="keycloakProfile.username">
       <th scope="row">Username</th>

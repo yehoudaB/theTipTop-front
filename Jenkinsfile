@@ -24,6 +24,7 @@ pipeline {
               
                 echo "deploying in prod : ${params.DEPLOY_IN_PROD}"
               if (params.DEPLOY_IN_PROD) {
+                
                 sh 'docker-compose -f docker-compose-prod.yml  up -d --no-deps --build'
               } else {
                 sh '''
