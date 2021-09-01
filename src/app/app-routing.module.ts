@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'big-prize', component: BigPrizeComponent}
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

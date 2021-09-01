@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +37,16 @@ import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
       
   }
 
+  function _window(): any {
+    return window;
+  }
+  @Injectable()
+    export class WindowRef {
+    get nativeWindow(): any {
+      return _window();
+    }
+}
+
 @NgModule({
   declarations: [ 
     AppComponent,
@@ -48,7 +58,7 @@ import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
     BigPrizeComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     NgxSimpleCountdownModule,
     AppRoutingModule,
     BrowserAnimationsModule,
