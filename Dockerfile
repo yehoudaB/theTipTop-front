@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 RUN npm install 
-RUN  npm run build:ssr --  --prod
+RUN  npm run build:ssr
 RUN  npm audit fix
 
 
