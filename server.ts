@@ -9,19 +9,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
 
-const domino = require('domino');
-  const win = domino.createWindow(indexHtml);
-  
-
-  global['window'] = win;
-  global['Node'] = win.Node;
-  global['navigator'] = win.navigator;
-  global['Event'] = win.Event;
-  global['KeyboardEvent'] = win.Event;
-  global['MouseEvent'] = win.Event;
-  global['Event']['prototype'] = win.Event.prototype;
-  global['document'] = win.document;
-
   const MockBrowser = require('mock-browser').mocks.MockBrowser;
   const mock = new MockBrowser();
 

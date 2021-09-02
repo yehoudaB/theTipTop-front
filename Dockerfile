@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 RUN npm install 
 RUN  npm run build:ssr
+RUN npm run serve:ssr
 RUN  npm audit fix
 
 
