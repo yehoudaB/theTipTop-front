@@ -16,8 +16,8 @@ COPY nginx.conf /etc/nginx/conf.d/
 COPY --from=node-build /app/dist/theTipTop-front/browser /usr/share/nginx/html
 
 
-FROM node:lts-alpine3.11 AS node-ssr-server
-COPY — from=node-build /app/dist /app/dist/
+FROM node:lts-alpine3.13 AS node-ssr-server
+COPY --from=node-build /app/dist /app/dist/
 COPY ./package.json /app/package.json
 WORKDIR /app
 EXPOSE 4000
