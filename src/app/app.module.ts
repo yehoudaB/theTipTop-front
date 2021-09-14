@@ -14,11 +14,14 @@ import { TicketComponent } from './ticket/ticket.component';
 import { BigPrizeComponent } from './big-prize/big-prize.component';
 import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import {MatButtonModule} from '@angular/material/button';
 import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
   function initializeKeycloak(keycloak: KeycloakService) {
     return () =>
       keycloak.init({
@@ -50,7 +53,11 @@ import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
   imports: [
     BrowserModule,
     NgxSimpleCountdownModule,
+    MatDatepickerModule,
     AppRoutingModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     HttpClientModule,
     KeycloakAngularModule,
@@ -58,6 +65,7 @@ import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
     MatCardModule,
     BrowserModule,
     MatFormFieldModule ,
+    MatSlideToggleModule,
     FormsModule,
     MatButtonModule,
     NgxSimpleCountdownModule,

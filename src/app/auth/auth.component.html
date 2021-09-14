@@ -1,11 +1,11 @@
-<h1>Informations personnelles</h1>
+<h1 class="text-center mt-3">Informations personnelles</h1>
 
-<button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
-<button *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
+<button *ngIf="isLoggedIn" type="button" (click)="logout()">Déconnexion</button>
+<button *ngIf="!isLoggedIn" type="button" (click)="login()">Connexion</button>
 
 <ng-container *ngIf="keycloakProfile">
   <h2>mon compte</h2>
-  <table>
+  <table class="pl-2">
     <tr *ngIf="keycloakProfile.username">
       <th scope="row">Username</th>
       <td>{{ keycloakProfile.username }}</td>
@@ -26,5 +26,31 @@
       <th scope="row">E-mail verified</th>
       <td>{{ keycloakProfile.emailVerified ? 'Yes' : 'No' }}</td>
     </tr>
+    <tr>
+      <th scope="row">Date de naissance</th>
+      <td>&nbsp; {{ CurrentUserDb?.birthDate | date }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Je veux reçevoir la newsletter</th>
+      <td>&nbsp; {{ CurrentUserDb?.canEmailMe}}</td>
+    </tr>
   </table>
 </ng-container>
+
+
+<mat-card class="col-md-8 offset-md-2 mt-5">
+  
+  <h3 class="m-1">mettre à jour mes Informations</h3>
+  <form [formGroup]="form" >
+    <mat-form-field appearance="fill"  class="col-sm-12 col-12  col-md-6 offset-md-3 mt-3 ">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" class="col-sm-12" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-slide-toggle class="m-5"
+    formControlName="canEmailMe"
+    [checked]=" CurrentUserDb?.canEmailMe">Je veux reçevoir la newsletter</mat-slide-toggle>
+  </form>
+
+</mat-card>

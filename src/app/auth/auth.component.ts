@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { environment } from 'src/environments/environment';
@@ -15,10 +16,19 @@ export class AuthComponent implements OnInit {
   logoutUrl = environment.logoutUrl;
   public isLoggedIn = false;
   public keycloakProfile: KeycloakProfile | null = null;
+  
+  CurrentUserDb!: User;
+   
+  form: FormGroup = this.formBuilder.group({
+    date : [''],
+    canEmailMe: []
+    
+  });
 
   constructor(
     private readonly keycloakService: KeycloakService,
-    public objectService: ObjectService
+    public objectService: ObjectService,
+    public formBuilder: FormBuilder
     ) { }
 
   public async ngOnInit() {
@@ -35,6 +45,12 @@ export class AuthComponent implements OnInit {
       resp => { console.log(resp)},
       err => {console.log(err)}
     )
+    this.objectService.getCurrentUser(this.keycloakProfile?.email ? this.keycloakProfile?.email : '')
+    .subscribe(resp => {
+      this.CurrentUserDb = resp
+    })
+
+    this.observeForm();
   }
   updateUserInDb(keycloakProfile: KeycloakProfile) {
     const user: User = {
@@ -47,6 +63,8 @@ export class AuthComponent implements OnInit {
       
     }
 
+
+    
     
       // pour tester sur postman
       console.log('stringify:',JSON.stringify(user));
@@ -62,6 +80,26 @@ export class AuthComponent implements OnInit {
     );
   }
 
+
+  observeForm(){
+    this.form.valueChanges.subscribe(
+      (f)=>{
+      console.log(this.form.controls)
+      if(this.form.controls.date.valid ){
+        console.log(Date.parse(this.form.controls.date.value))
+        
+        this.CurrentUserDb.birthDate = this.form.controls.date.value.toISOString();
+        this.CurrentUserDb.canEmailMe = this.form.controls.canEmailMe.value ;
+
+        this.objectService.saveObject('users', this.CurrentUserDb).subscribe(
+          resp => { console.log(resp)},
+          err => { console.log(err)}
+        )
+      }
+    
+      
+    })
+  }
   public login() {
     this.keycloakService.login();
   }

@@ -7,7 +7,7 @@ export class User {
         public email?: string,
         public firstName?: string,
         public lastName?: string,
-        public birthDate?: string,
+        public birthDate?: Date,
         public canEmailMe?: boolean,
         public wonTheBigLot?: Lot ,
         public hadHisGift?: boolean,

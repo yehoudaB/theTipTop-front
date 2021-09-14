@@ -19,7 +19,6 @@
                     <span>ticket inconnu</span>
                 </mat-error>
             </mat-form-field>
-            <br> <i>demo: essayer avec : 56789</i>
             <zxing-scanner  (scanSuccess)="onCodeResult($event)" *ngIf="isShowingCam" [tryHarder]="true"></zxing-scanner>
            
         </form>
